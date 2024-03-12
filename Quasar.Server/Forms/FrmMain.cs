@@ -298,9 +298,15 @@ namespace Quasar.Server.Forms
                 // this " " leaves some space between the flag-icon and first item
                 ListViewItem lvi = new ListViewItem(new string[]
                 {
-                    " " + client.EndPoint.Address, client.Value.Tag,
-                    client.Value.UserAtPc, client.Value.Version, "Connected", "Active", client.Value.CountryWithCode,
-                    client.Value.OperatingSystem, client.Value.AccountType
+                    "" + client.EndPoint.Address,
+                    client.Value.CountryWithCode,
+                    client.Value.UserAtPc, 
+                    "Connected", 
+                    "Active",
+                    client.Value.Version,
+                    client.Value.Tag,
+                    client.Value.OperatingSystem, 
+                    client.Value.AccountType
                 }) { Tag = client, ImageIndex = client.Value.ImageIndex };
 
                 lstClients.Invoke((MethodInvoker) delegate

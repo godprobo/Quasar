@@ -1,4 +1,5 @@
-﻿using Quasar.Common.Cryptography;
+﻿using IP2Region;
+using Quasar.Common.Cryptography;
 using Quasar.Common.Messages;
 using System;
 using System.Linq;
@@ -141,9 +142,24 @@ namespace Quasar.Server.Networking
             client.Value.ImageIndex = packet.ImageIndex;
             client.Value.EncryptionKey = packet.EncryptionKey;
 
-            // TODO: Refactor tooltip
-            //if (Settings.ShowToolTip)
-            //    client.Send(new GetSystemInfo());
+            try
+            {
+                using (DbSearcher search = new DbSearcher(Environment.CurrentDirectory + @"\Lib\ip2region.db"))
+                {
+                    IP2Region.Models.DataBlock ipModel = search.MemorySearch(client.EndPoint.Address.ToString());
+                    string ipRegion = ipModel.Region;
+                    client.Value.CountryCode = ipRegion.Replace("0", "").Replace("|","");
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+
+                // TODO: Refactor tooltip
+                //if (Settings.ShowToolTip)
+                //    client.Send(new GetSystemInfo());
 
 #if !DEBUG
             try
@@ -157,7 +173,7 @@ namespace Quasar.Server.Networking
                 return false;
             }
 #else
-            return true;
+                return true;
 #endif
         }
     }

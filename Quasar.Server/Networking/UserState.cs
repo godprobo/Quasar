@@ -20,7 +20,7 @@ namespace Quasar.Server.Networking
         public string Username { get; set; }
         public string PcName { get; set; }
         public string UserAtPc => $"{Username}@{PcName}";
-        public string CountryWithCode => $"{Country} [{CountryCode}]";
+        public string CountryWithCode => $"{Country}[{CountryCode}]";
         public string Tag { get; set; }
         public string EncryptionKey { get; set; }
 

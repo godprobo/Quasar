@@ -300,6 +300,7 @@
     <ProjectReference Include="..\Quasar.Common\Quasar.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="IP2Region" Version="1.2.0" />
     <PackageReference Include="Mono.Cecil">
       <Version>0.11.4</Version>
     </PackageReference>
