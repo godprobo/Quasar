@@ -779,5 +779,22 @@ namespace Quasar.Server.Forms
         }
 
         #endregion
+
+        private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListView listview = (ListView)sender;
+            ListViewItem lstrow = listview.GetItemAt(e.X, e.Y);
+            System.Windows.Forms.ListViewItem.ListViewSubItem lstcol = lstrow.GetSubItemAt(e.X, e.Y);
+            string strText = lstcol.Text;
+            try
+            {
+                Clipboard.SetDataObject(strText);
+                string info = string.Format("{0}", strText);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

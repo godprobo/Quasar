@@ -150,6 +150,8 @@ namespace Quasar.Server.Networking
                     string ipRegion = ipModel.Region;
                     client.Value.CountryCode = ipRegion.Replace("0", "").Replace("|","");
                 }
+
+                client.Value.Country = client.Value.Country.Replace("People's Republic of China", "CN");
             }
             catch (Exception)
             {
