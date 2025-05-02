@@ -151,7 +151,9 @@ namespace Quasar.Server.Networking
                     client.Value.CountryCode = ipRegion.Replace("0", "").Replace("|","");
                 }
 
-                client.Value.Country = client.Value.Country.Replace("People's Republic of China", "CN");
+                client.Value.Country = client.Value.Country.Replace("People's Republic of China", "CN")
+                                                           .Replace("China", "CN")
+                                                           .Replace("中华人民共和国", "CN");
             }
             catch (Exception)
             {
