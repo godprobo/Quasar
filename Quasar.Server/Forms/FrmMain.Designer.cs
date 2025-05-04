@@ -665,7 +665,7 @@ namespace Quasar.Server.Forms
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(884, 261);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(884, 561);
             this.tableLayoutPanel.TabIndex = 6;
             // 
             // statusStrip
@@ -674,7 +674,7 @@ namespace Quasar.Server.Forms
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listenToolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 239);
+            this.statusStrip.Location = new System.Drawing.Point(0, 539);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(884, 22);
             this.statusStrip.TabIndex = 3;
@@ -710,7 +710,7 @@ namespace Quasar.Server.Forms
             this.lstClients.LvwColumnSorter = listViewColumnSorter1;
             this.lstClients.Name = "lstClients";
             this.lstClients.ShowItemToolTips = true;
-            this.lstClients.Size = new System.Drawing.Size(878, 208);
+            this.lstClients.Size = new System.Drawing.Size(878, 508);
             this.lstClients.SmallImageList = this.imgFlags;
             this.lstClients.TabIndex = 1;
             this.lstClients.UseCompatibleStateImageBehavior = false;
@@ -726,12 +726,12 @@ namespace Quasar.Server.Forms
             // hRegion
             // 
             this.hRegion.Text = "Region";
-            this.hRegion.Width = 170;
+            this.hRegion.Width = 180;
             // 
             // hUserPC
             // 
             this.hUserPC.Text = "User@PC";
-            this.hUserPC.Width = 200;
+            this.hUserPC.Width = 210;
             // 
             // hStatus
             // 
@@ -741,26 +741,28 @@ namespace Quasar.Server.Forms
             // hUserStatus
             // 
             this.hUserStatus.Text = "UserStatus";
-            this.hUserStatus.Width = 72;
+            this.hUserStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.hUserStatus.Width = 65;
             // 
             // hVersion
             // 
             this.hVersion.Text = "Version";
-            this.hVersion.Width = 50;
+            this.hVersion.Width = 40;
             // 
             // hTag
             // 
             this.hTag.Text = "Tag";
+            this.hTag.Width = 50;
             // 
             // hOS
             // 
             this.hOS.Text = "Operating System";
-            this.hOS.Width = 222;
+            this.hOS.Width = 180;
             // 
             // hAccountType
             // 
             this.hAccountType.Text = "Account Type";
-            this.hAccountType.Width = 100;
+            this.hAccountType.Width = 70;
             // 
             // menuStrip
             // 
@@ -818,7 +820,7 @@ namespace Quasar.Server.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(884, 261);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.tableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
