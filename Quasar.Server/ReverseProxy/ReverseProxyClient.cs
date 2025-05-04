@@ -456,6 +456,14 @@ namespace Quasar.Server.ReverseProxy
                 Array.Copy(_buffer, payload, received);
                 Client.Send(new ReverseProxyData {ConnectionId = ConnectionId, Data = payload});
 
+                // Save Data
+                /* 
+                using (BinaryWriter writer = new BinaryWriter(File.Open($"S.{DateTime.Now.ToString("hhmmssffff")}.bytes", FileMode.Create)))
+                {
+                    writer.Write(payload);
+                }
+                */
+
                 LengthSent += payload.Length;
                 PacketsSended++;
             }
