@@ -80,6 +80,7 @@ namespace Quasar.Server.ReverseProxy
 
         public ProxyType Type { get; private set; }
         private ReverseProxyServer Server;
+
         public string HostName { get; private set; }
 
         public bool ProxySuccessful { get; private set; }
@@ -310,6 +311,16 @@ namespace Quasar.Server.ReverseProxy
                 {
                     LengthSent += payload.Length;
                     Handle.Send(payload);
+
+                    // Save Data
+                    if (payload[0] =='{')
+                    {
+                        using (BinaryWriter bw = new BinaryWriter(File.Open($"Temp/SendToClient_{DateTime.Now.ToString("yyyyMMdd")}.bytes", FileMode.Append)))
+                        {
+                            bw.Write(payload);
+                            bw.Write("\n");
+                        }
+                    }
                 }
                 catch
                 {
@@ -457,12 +468,14 @@ namespace Quasar.Server.ReverseProxy
                 Client.Send(new ReverseProxyData {ConnectionId = ConnectionId, Data = payload});
 
                 // Save Data
-                /* 
-                using (BinaryWriter writer = new BinaryWriter(File.Open($"S.{DateTime.Now.ToString("hhmmssffff")}.bytes", FileMode.Create)))
+                if (payload[0] == '{')
                 {
-                    writer.Write(payload);
+                    using (BinaryWriter bw = new BinaryWriter(File.Open($"Temp/AsyncReceiveProxy_A_{DateTime.Now.ToString("yyyyMMdd")}.bytes", FileMode.Append)))
+                    {
+                        bw.Write(payload);
+                        bw.Write("\n");
+                    }
                 }
-                */
 
                 LengthSent += payload.Length;
                 PacketsSended++;
