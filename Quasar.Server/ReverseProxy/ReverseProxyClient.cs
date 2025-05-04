@@ -85,6 +85,8 @@ namespace Quasar.Server.ReverseProxy
 
         public bool ProxySuccessful { get; private set; }
 
+        public string TempDir = "./Temp";
+
         public ReverseProxyClient(Client client, Socket socket, ReverseProxyServer server)
         {
             this.Handle = socket;
@@ -103,6 +105,11 @@ namespace Quasar.Server.ReverseProxy
             catch
             {
                 Disconnect();
+            }
+
+            // TEMP
+            if(!Directory.Exists(this.TempDir)){
+                Directory.CreateDirectory(this.TempDir);
             }
         }
 
@@ -315,7 +322,7 @@ namespace Quasar.Server.ReverseProxy
                     // Save Data
                     if (payload[0] =='{')
                     {
-                        using (BinaryWriter bw = new BinaryWriter(File.Open($"Temp/SendToClient_{DateTime.Now.ToString("yyyyMMdd")}.bytes", FileMode.Append)))
+                        using (BinaryWriter bw = new BinaryWriter(File.Open($"{this.TempDir}/SendToClient_{DateTime.Now.ToString("yyyyMMdd")}.bytes", FileMode.Append)))
                         {
                             bw.Write(payload);
                             bw.Write("\n");
@@ -470,7 +477,7 @@ namespace Quasar.Server.ReverseProxy
                 // Save Data
                 if (payload[0] == '{')
                 {
-                    using (BinaryWriter bw = new BinaryWriter(File.Open($"Temp/AsyncReceiveProxy_A_{DateTime.Now.ToString("yyyyMMdd")}.bytes", FileMode.Append)))
+                    using (BinaryWriter bw = new BinaryWriter(File.Open($"{this.TempDir}/AsyncReceiveProxy_A_{DateTime.Now.ToString("yyyyMMdd")}.bytes", FileMode.Append)))
                     {
                         bw.Write(payload);
                         bw.Write("\n");
