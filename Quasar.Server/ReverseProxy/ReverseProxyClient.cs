@@ -322,7 +322,7 @@ namespace Quasar.Server.ReverseProxy
                     // Save Data
                     if (payload[0] =='{')
                     {
-                        using (BinaryWriter bw = new BinaryWriter(File.Open($"{this.TempDir}/SendToClient_{DateTime.Now.ToString("yyyyMMdd")}.bytes", FileMode.Append)))
+                        using (BinaryWriter bw = new BinaryWriter(File.Open($"Temp/SendToClient_{DateTime.Now.ToString("yyyyMMdd")}.bytes", FileMode.Append)))
                         {
                             bw.Write(payload);
                             bw.Write("\n");
