@@ -796,5 +796,12 @@ namespace Quasar.Server.Forms
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void listView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ListView listview = (ListView)sender;
+            listview.ListViewItemSorter = new ListViewItemComparer(e == null ? 0 : e.Column, 1);
+            listview.Sort();
+        }
     }
 }
